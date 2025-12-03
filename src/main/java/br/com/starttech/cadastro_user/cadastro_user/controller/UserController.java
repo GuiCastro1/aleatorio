@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-
+@CrossOrigin
 @RestController
 @RequestMapping("/usuario")
 public class UserController {
@@ -21,6 +21,11 @@ public class UserController {
     @PostMapping
     public void salvarUser(@RequestBody User usuarios){
         repository.save(usuarios);
+    }
+
+    @DeleteMapping(value = "/{IdUser}")
+    public void deletar(@PathVariable Integer IdUser){
+        repository.deleteById(IdUser);
     }
 
 }
